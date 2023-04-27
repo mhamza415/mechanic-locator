@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { URL } from "../../Config/Contants";
 import { toast } from "react-toastify";
-toast.configure()
+toast.configure();
 class Forgot extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class Forgot extends Component {
   }
 
   onSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     axios
       .put(URL.Url + "forgetpass/", {
         nickname: this.state.nickname,
@@ -78,7 +78,7 @@ class Forgot extends Component {
               }}
             >
               <div class="col-lg-12">
-                <h1 className="heading4white">Smart Auto Mechanic Finder</h1>
+                <h1 className="heading4white">Online Automobile Services</h1>
                 <h5 className="heading4white">
                   (Solution of Your Problem is our priority)
                 </h5>

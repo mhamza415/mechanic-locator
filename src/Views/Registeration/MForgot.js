@@ -3,8 +3,8 @@ import Navbar from "../../Navigations/Navbar";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import { URL } from "../../Config/Contants";
-import {toast} from "react-toastify"
-toast.configure()
+import { toast } from "react-toastify";
+toast.configure();
 class MForgot extends Component {
   constructor(props) {
     super(props);
@@ -19,7 +19,7 @@ class MForgot extends Component {
   }
 
   onSubmit = (e) => {
-    e.preventDefault()
+    e.preventDefault();
     axios
       .put(URL.Url + "mforgetpass/", {
         nickname: this.state.nickname,
@@ -32,7 +32,6 @@ class MForgot extends Component {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 1500,
         });
-     
       })
       .catch((error) => {
         console.log(error);
@@ -40,7 +39,6 @@ class MForgot extends Component {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 1500,
         });
-     
       });
   };
 
@@ -84,7 +82,7 @@ class MForgot extends Component {
               }}
             >
               <div class="col-lg-12">
-                <h1 className="heading4white">Smart Auto Mechanic Finder</h1>
+                <h1 className="heading4white">Online Automobile Services</h1>
                 <h5 className="heading4white">
                   (Solution of Your Problem is our priority)
                 </h5>

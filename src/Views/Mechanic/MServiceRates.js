@@ -35,7 +35,7 @@ class MServiceRates extends Component {
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <h2 className="heading2 white">
-                      Smart Auto Mechanic Finder
+                      Online Automobile Services
                     </h2>
                   </Col>
                 </Col>
@@ -92,7 +92,7 @@ class MServiceRates extends Component {
               <img
                 src="assets/images/rates.jpg"
                 alt="rates"
-                style={{ height: 350, width: 400  ,objectFit:'cover'}}
+                style={{ height: 350, width: 400, objectFit: "cover" }}
               ></img>
             </Col>
 

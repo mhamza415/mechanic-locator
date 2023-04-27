@@ -26,8 +26,7 @@ class Dashboard extends Component {
                     alt="Los Angeles"
                     width="100%"
                     height="500"
-                    style={{ objectFit:'cover'}}
-
+                    style={{ objectFit: "cover" }}
                   />
                   <div class="carousel-caption">
                     <h3>Engine</h3>
@@ -39,7 +38,7 @@ class Dashboard extends Component {
                     src="paint.jpg"
                     alt="Chicago"
                     width="100%"
-                    style={{ objectFit:'cover'}}
+                    style={{ objectFit: "cover" }}
                     height="500"
                   />
                   <div class="carousel-caption">
@@ -52,7 +51,7 @@ class Dashboard extends Component {
                     src="electric.jpg"
                     alt="New York"
                     width="100%"
-                    style={{ objectFit:'cover'}}
+                    style={{ objectFit: "cover" }}
                     height="500"
                   />
                   <div class="carousel-caption">
@@ -64,7 +63,7 @@ class Dashboard extends Component {
                   <img
                     src="body.jpg"
                     alt="New York"
-                    style={{ objectFit:'cover'}}
+                    style={{ objectFit: "cover" }}
                     width="100%"
                     height="500"
                   />
@@ -92,7 +91,7 @@ class Dashboard extends Component {
                 </h3>
               </Col>
               <p>
-                Smart Auto Mechanic Finder is an mobile application based on
+                Online Automobile Services is an mobile application based on
                 finding Mechanics that will near to your current location. All
                 the details of tuning and repairing of vehicles used to be
                 maintained manually. This is not advisable because maintenance
@@ -115,7 +114,7 @@ class Dashboard extends Component {
                 style={{ marginTop: 30, marginBottom: 30 }}
               >
                 <h3 className="heading2">
-                  <u className="ub">Smart Auto Mechanic Finder</u>
+                  <u className="ub">Online Automobile Services</u>
                 </h3>
               </Col>
               <h5 style={{ textAlign: "center" }}>Know Before You Leave</h5>
@@ -126,10 +125,18 @@ class Dashboard extends Component {
               </h6>
               <div class="d-flex justify-content-center">
                 <a href="Home.html" target="_blank">
-                  <img src="assets/images/playStore.png"  alt='playstore' style={{ objectFit:'cover'}}/>
+                  <img
+                    src="assets/images/playStore.png"
+                    alt="playstore"
+                    style={{ objectFit: "cover" }}
+                  />
                 </a>
                 <a href="Home.html" target="_blank">
-                  <img src="assets/images/appStore.png"alt='appstore' style={{ objectFit:'cover'}} />
+                  <img
+                    src="assets/images/appStore.png"
+                    alt="appstore"
+                    style={{ objectFit: "cover" }}
+                  />
                 </a>
               </div>
             </Col>
@@ -295,9 +302,8 @@ class Dashboard extends Component {
                 <Link to="/LBlood">See More</Link>
               </p>
             </Col>
-
-            <Footer></Footer>
           </Row>
+          <Footer></Footer>
         </Container>
       </body>
     );

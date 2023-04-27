@@ -106,7 +106,7 @@ class AServiceRates extends Component {
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <h2 className="heading2 white">
-                      Smart Auto Mechanic Finder
+                      Online Automobile Services
                     </h2>
                   </Col>
                 </Col>

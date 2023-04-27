@@ -6,9 +6,9 @@ class MContactUs extends Component {
   state = {};
   render() {
     return (
-      <body style={{backgroundColor:'whitesmoke'}}>
+      <body style={{ backgroundColor: "whitesmoke" }}>
         <MNav></MNav>
-        <Container fluid >
+        <Container fluid>
           <Row>
             <Col className="col-sm-12 Homeimg ">
               <Col className="col-sm-12">
@@ -18,7 +18,7 @@ class MContactUs extends Component {
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <h2 className="heading2 white">
-                      Smart Auto Mechanic Finder
+                      Online Automobile Services
                     </h2>
                   </Col>
                 </Col>
@@ -31,19 +31,18 @@ class MContactUs extends Component {
                 </Col>
               </Col>
             </Col>
-          
-              <Col className="col-sm-6 Center" style={{ marginTop: 30 }}>
-                <h2>Contact Us</h2>
-                <h5>Email Us At</h5>
-                <p>Mianumerfareed72@gmail.com</p>
-                <h5>Call Us</h5>
-                <p>03044228402</p>
-              </Col>
-              <Col className="col-sm-6 Center" style={{ marginTop: 30 }}>
-                <h2>Location</h2>
-                <p> Mughal Plaza 2nd Floor Office # 25 Muslim Town Lahore </p>
-              </Col>
-       
+
+            <Col className="col-sm-6 Center" style={{ marginTop: 30 }}>
+              <h2>Contact Us</h2>
+              <h5>Email Us At</h5>
+              <p>Mianumerfareed72@gmail.com</p>
+              <h5>Call Us</h5>
+              <p>03044228402</p>
+            </Col>
+            <Col className="col-sm-6 Center" style={{ marginTop: 30 }}>
+              <h2>Location</h2>
+              <p> Mughal Plaza 2nd Floor Office # 25 Muslim Town Lahore </p>
+            </Col>
           </Row>
         </Container>
         <MFooter></MFooter>

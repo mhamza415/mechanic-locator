@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Container, Row, Col, Card, Modal} from "react-bootstrap";
+import { Container, Row, Col, Card, Modal } from "react-bootstrap";
 
 import ANav from "../../Navigations/ANav";
 import AFooter from "../../Components/AFooter";
@@ -37,8 +37,8 @@ class Mechanics extends Component {
         toast("Mechanic Deleted", {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 1500,
-        })
-        window.location.reload(false)
+        });
+        window.location.reload(false);
       });
   };
   userChangeHandler = (val) => {
@@ -68,18 +68,15 @@ class Mechanics extends Component {
         toast("Warning Send Successfuly", {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 1500,
- 
         });
         window.location.reload(false);
- 
       })
       .catch((error) => {
         toast("Wrning Not Send", {
           position: toast.POSITION.TOP_CENTER,
           autoClose: 1500,
- 
         });
- 
+
         console.log(error);
       });
   };
@@ -90,12 +87,11 @@ class Mechanics extends Component {
     });
   };
 
-
   componentDidMount() {
     this.getUser();
   }
   render() {
-    const { users, loading, search,userdata } = this.state;
+    const { users, loading, search, userdata } = this.state;
 
     return (
       <body
@@ -107,7 +103,7 @@ class Mechanics extends Component {
       >
         <ANav></ANav>
         <Container fluid>
-        <Modal show={this.state.show} onHide={this.handleClose}>
+          <Modal show={this.state.show} onHide={this.handleClose}>
             <Modal.Header closeButton>
               <Modal.Title>Send Warning</Modal.Title>
             </Modal.Header>
@@ -166,7 +162,7 @@ class Mechanics extends Component {
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <h2 className="heading2 white">
-                      Smart Auto Mechanic Finder
+                      Online Automobile Services
                     </h2>
                   </Col>
                 </Col>
@@ -232,7 +228,6 @@ class Mechanics extends Component {
                                 <Card
                                   className="card"
                                   style={{
-                                  
                                     width: 200,
                                     margin: 10,
                                   }}
@@ -240,7 +235,11 @@ class Mechanics extends Component {
                                   <Card.Img
                                     variant="top"
                                     src={data.photo}
-                                    style={{ height: 180, width: 200, objectFit:'cover' }}
+                                    style={{
+                                      height: 180,
+                                      width: 200,
+                                      objectFit: "cover",
+                                    }}
                                     alt="Cosupervisor"
                                   />
                                   <Card.Body>
@@ -251,7 +250,7 @@ class Mechanics extends Component {
                                         color: "lightblue",
                                       }}
                                     >
-                                     {data._id}
+                                      {data._id}
                                     </Card.Text>
                                     <button
                                       type="button"

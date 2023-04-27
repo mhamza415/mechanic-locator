@@ -16,7 +16,7 @@ class ATermsandPolicies extends Component {
       >
         <ANav></ANav>
         <Container fluid>
-          <Row style={{ backgroundColor: "rgba(0,0,0,0.7)" }} >
+          <Row style={{ backgroundColor: "rgba(0,0,0,0.7)" }}>
             <Col
               className="col-sm-12 Homeimg "
               style={{ backgroundColor: "rgba(255,255,255,0.1)" }}
@@ -28,7 +28,7 @@ class ATermsandPolicies extends Component {
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <h2 className="heading2 white">
-                      Smart Auto Mechanic Finder
+                      Online Automobile Services
                     </h2>
                   </Col>
                 </Col>
@@ -56,9 +56,8 @@ class ATermsandPolicies extends Component {
                         </h3>
                       </Col>{" "}
                       <div class="card">
-                      
                         <div class="card-header">Terms & Policies</div>
-                       
+
                         <div class="card-body">
                           <h5 class="card-title">Special title treatment</h5>
                           <p class="card-text">
@@ -66,20 +65,20 @@ class ATermsandPolicies extends Component {
                             additional content.
                           </p>
                         </div>
-                          
                       </div>
                       <Col
                         className="col-sm-12 Aligncenter"
                         style={{ marginTop: 30, marginBottom: 30 }}
                       >
                         <h3 className="heading2">
-                          <u className="ub">Terms and Policies for (Mechanics)</u>
+                          <u className="ub">
+                            Terms and Policies for (Mechanics)
+                          </u>
                         </h3>
                       </Col>{" "}
                       <div class="card">
-                      
                         <div class="card-header">Terms & Policies</div>
-                       
+
                         <div class="card-body">
                           <h5 class="card-title">Special title treatment</h5>
                           <p class="card-text">
@@ -87,10 +86,8 @@ class ATermsandPolicies extends Component {
                             additional content.
                           </p>
                         </div>
-                          
                       </div>
-                    
-                       </div>
+                    </div>
                   </div>
                 </div>
               </div>

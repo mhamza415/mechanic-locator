@@ -119,14 +119,14 @@ class TopMechanics extends Component {
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <h2 className="heading2 white">
-                      Smart Auto Mechanic Finder
+                      Online Automobile Services
                     </h2>
                   </Col>
                 </Col>
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <p className="heading4white smokewhite">
-                    Top Mechanic Profiles
+                      Top Mechanic Profiles
                     </p>
                   </Col>
                 </Col>

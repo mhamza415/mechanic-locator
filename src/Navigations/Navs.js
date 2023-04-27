@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 import { logout } from "../actions/index";
 
 class Navs extends Component {
-
   Logout = () => {
     this.props.logout();
   };
@@ -24,7 +23,7 @@ class Navs extends Component {
         >
           <img
             src="assets/images/appicon.png"
-            style={{ height: 25, width: 25, margin: 5 , objectFit:'cover'}}
+            style={{ height: 25, width: 25, margin: 5, objectFit: "cover" }}
             alt="App"
           ></img>
           <a
@@ -32,7 +31,7 @@ class Navs extends Component {
             href="#lsa"
             style={{ fontFamily: "-moz-initial" }}
           >
-            Smart Auto Mechanic Finder
+            Online Automobile Services
           </a>
         </div>
         <div style={{ marginRight: 100 }}>
@@ -97,7 +96,7 @@ class Navs extends Component {
                     class="dropdown-menu"
                     aria-labelledby="navbarDropdownMenuLink"
                   >
-                     <NavLink class="dropdown-item heading3" to="/Setting">
+                    <NavLink class="dropdown-item heading3" to="/Setting">
                       Hi {this.props.auth.user.firstname}
                     </NavLink>
 

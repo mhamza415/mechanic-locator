@@ -24,7 +24,7 @@ class ANav extends Component {
         >
           <img
             src="assets/images/appicon.png"
-            style={{ height: 25, width: 25, margin: 5, objectFit:'cover' }}
+            style={{ height: 25, width: 25, margin: 5, objectFit: "cover" }}
             alt="App"
           ></img>
           <a
@@ -32,7 +32,7 @@ class ANav extends Component {
             href="#lsa"
             style={{ fontFamily: "-moz-initial" }}
           >
-            Smart Auto Mechanic Finder
+            Online Automobile Services
           </a>
         </div>
         <div style={{ marginRight: 100 }}>

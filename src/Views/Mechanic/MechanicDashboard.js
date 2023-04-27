@@ -5,17 +5,14 @@ import MNav from "../../Navigations/MNav";
 import { Link } from "react-router-dom";
 import MFooter from "../../Components/MFooter";
 class MechanicDashboard extends Component {
-  constructor(props){
-    super(props)
-    this.state={
-    }
+  constructor(props) {
+    super(props);
+    this.state = {};
   }
 
-  
   render() {
     return (
-
-<body style={{ backgroundColor: "whitesmoke" }}>
+      <body style={{ backgroundColor: "whitesmoke" }}>
         <MNav data={this.state.data}></MNav>
 
         <Container fluid>
@@ -34,7 +31,7 @@ class MechanicDashboard extends Component {
                     alt="Los Angeles"
                     width="100%"
                     height="500"
-                    style={{ objectFit:'cover'}}
+                    style={{ objectFit: "cover" }}
                   />
                   <div class="carousel-caption">
                     <h3>Engine</h3>
@@ -47,7 +44,7 @@ class MechanicDashboard extends Component {
                     alt="Chicago"
                     width="100%"
                     height="500"
-                    style={{ objectFit:'cover'}}
+                    style={{ objectFit: "cover" }}
                   />
                   <div class="carousel-caption">
                     <h3>Painter</h3>
@@ -60,7 +57,7 @@ class MechanicDashboard extends Component {
                     alt="New York"
                     width="100%"
                     height="500"
-                    style={{ objectFit:'cover'}}
+                    style={{ objectFit: "cover" }}
                   />
                   <div class="carousel-caption">
                     <h3>Electrician</h3>
@@ -73,7 +70,7 @@ class MechanicDashboard extends Component {
                     alt="New York"
                     width="100%"
                     height="500"
-                    style={{ objectFit:'cover'}}
+                    style={{ objectFit: "cover" }}
                   />
                   <div class="carousel-caption">
                     <h3>Body</h3>
@@ -99,8 +96,7 @@ class MechanicDashboard extends Component {
                 </h3>
               </Col>
               <p>
-                
-                Smart Auto Mechanic Finder is an mobile application based on
+                Online Automobile Services is an mobile application based on
                 finding Mechanics that will near to your current location. All
                 the details of tuning and repairing of vehicles used to be
                 maintained manually. This is not advisable because maintenance
@@ -123,7 +119,7 @@ class MechanicDashboard extends Component {
                 style={{ marginTop: 30, marginBottom: 30 }}
               >
                 <h3 className="heading2">
-    <u className="ub">Smart Auto Mechanic Finder</u>
+                  <u className="ub">Online Automobile Services</u>
                 </h3>
               </Col>
               <h5 style={{ textAlign: "center" }}>Know Before You Leave</h5>
@@ -134,10 +130,18 @@ class MechanicDashboard extends Component {
               </h6>
               <div class="d-flex justify-content-center">
                 <a href="Home.html" target="_blank">
-                  <img src="assets/images/playStore.png" alt="playstore" style={{ objectFit:'cover'}}/>
+                  <img
+                    src="assets/images/playStore.png"
+                    alt="playstore"
+                    style={{ objectFit: "cover" }}
+                  />
                 </a>
                 <a href="Home.html" target="_blank">
-                  <img src="assets/images/appStore.png" alt="appstore" style={{ objectFit:'cover'}} />
+                  <img
+                    src="assets/images/appStore.png"
+                    alt="appstore"
+                    style={{ objectFit: "cover" }}
+                  />
                 </a>
               </div>
             </Col>
@@ -208,14 +212,12 @@ class MechanicDashboard extends Component {
                 <Link to="/LBlood">See More</Link>
               </p>
             </Col>
-
-            <MFooter></MFooter>
           </Row>
+          <MFooter></MFooter>
         </Container>
       </body>
     );
   }
 }
-
 
 export default MechanicDashboard;

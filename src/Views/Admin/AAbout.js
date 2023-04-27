@@ -28,7 +28,7 @@ class AAbout extends Component {
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <h2 className="heading2 white">
-                      Smart Auto Mechanic Finder
+                      Online Automobile Services
                     </h2>
                   </Col>
                 </Col>
@@ -241,10 +241,10 @@ class AAbout extends Component {
                       </h5>
                     </Col>
                     <p>
-                      Special Thanks To Our Supervisor & Co-Supervisor. It would
-                      be unfair and unkind not to acknowledge the guidance,
-                      intelligence and patience Dr. Farooq Ahmad and Abdul Karim
-                      Shahid has shared with us while working on this project.
+                      Special Thanks To Our Supervisors. It would be unfair and
+                      unkind not to acknowledge the guidance, intelligence and
+                      patience Ma'am Faiza, Sir Suhail Ashfaq Butt and Sir Akram
+                      Mujahid has shared with us while working on this project.
                       We are incredibly grateful to our supervisor and
                       co-supervisor for his vision and his persistence upon the
                       values of hard work, helping others and not losing morale.
@@ -258,21 +258,20 @@ class AAbout extends Component {
                     <Card>
                       <Card.Img
                         variant="top"
-                        src="assets/images/farooq.jpeg"
+                        src="assets/images/s1.jpg"
                         alt="Cosupervisor"
-                        style={{ height: 250, objectFit:'cover' }}
+                        style={{ height: 250, objectFit: "cover" }}
                       />
                       <Card.Body>
-                        <Card.Title>Dr Farooq Ahmad</Card.Title>
-                        <Card.Text style={{ fontSize: 14, color: "lightgray" }}>
+                        <Card.Title style={{ color: "blue" }}>
+                          Ma'am Faiza
+                        </Card.Title>
+                        <Card.Text style={{ fontSize: 14, color: "gray" }}>
                           Supervisor
                         </Card.Text>
 
                         <Card.Text style={{ fontSize: 16, color: "gray" }}>
-                          HEC Approved PhD Supervisor, Associate Professor,
-                          Computer Science
-                          <br />
-                          COMSATS University Islamabad, Lahore Campus, Pakistan
+                          University of Education, Lahore Campus, Pakistan
                           <br />
                         </Card.Text>
                         <Button variant="primary">Read More</Button>
@@ -286,21 +285,20 @@ class AAbout extends Component {
                         variant="top"
                         src="assets/images/s1.jpg"
                         alt="Cosupervisor"
-                        style={{ height: 250 , objectFit:'cover'}}
+                        style={{ height: 250, objectFit: "cover" }}
                       />
                       <Card.Body>
-                        <Card.Title>Sir Abdul Kareem Shahid</Card.Title>
-                        <Card.Text style={{ fontSize: 14, color: "lightgray" }}>
-                          Co-Supervisor
+                        <Card.Title style={{ color: "blue" }}>
+                          Sir Akram Mujahid
+                        </Card.Title>
+                        <Card.Text style={{ fontSize: 14, color: "gray" }}>
+                          Head of PMO
                         </Card.Text>
 
                         <Card.Text style={{ fontSize: 16, color: "gray" }}>
-                          Assistant Professor, Computer Science
-                          <br />
-                          COMSATS University Islamabad, Lahore Campus, Pakistan
-                          <br />
+                          University of Education, Lahore Campus, Pakistan
                         </Card.Text>
-                        <Button style={{ marginTop: 25 }} variant="primary">
+                        <Button variant="primary">
                           Read More
                         </Button>
                       </Card.Body>
@@ -312,20 +310,22 @@ class AAbout extends Component {
                     <Card style={this.cards}>
                       <Card.Img
                         variant="top"
-                        src="assets/images/s1.jpg"
+                        src="assets/images/usama.jpg"
                         alt="Cosupervisor"
-                        style={{ height: 350,  objectFit:'cover'}}
+                        style={{ height: 350, objectFit: "cover" }}
                       />
                       <Card.Body>
-                        <Card.Title>Sir Zaheer Ahmad Gondal</Card.Title>
-                        <Card.Text style={{ fontSize: 14, color: "lightgray" }}>
-                          Project Manager
+                        <Card.Title style={{ color: "blue" }}>
+                          Usama Mustafa
+                        </Card.Title>
+                        <Card.Text style={{ fontSize: 14, color: "gray" }}>
+                          Group Leader
                         </Card.Text>
 
                         <Card.Text style={{ fontSize: 16, color: "gray" }}>
-                          Lecturer, Computer Science
+                          BS Student (IT)
                           <br />
-                          COMSATS University Islamabad, Lahore Campus, Pakistan
+                          University of Education, Lahore Campus, Pakistan
                           <br />
                         </Card.Text>
                         <Button variant="primary">Read More</Button>
@@ -337,20 +337,26 @@ class AAbout extends Component {
                     <Card style={this.cards}>
                       <Card.Img
                         variant="top"
-                        src="assets/images/Mian.jpg"
+                        src="assets/images/naeem.jpeg"
                         alt="Cosupervisor"
-                        style={{ height: 350 , objectFit:'cover'}}
+                        style={{
+                          height: 350,
+                          objectFit: "fill",
+                          objectPosition: "center center",
+                        }}
                       />
                       <Card.Body>
-                        <Card.Title>Muhammad Umer Fareed</Card.Title>
-                        <Card.Text style={{ fontSize: 14, color: "lightgray" }}>
+                        <Card.Title style={{ color: "blue" }}>
+                          M Naeem
+                        </Card.Title>
+                        <Card.Text style={{ fontSize: 14, color: "gray" }}>
                           Developer
                         </Card.Text>
 
                         <Card.Text style={{ fontSize: 16, color: "gray" }}>
-                          BS Student(Software Engineering)
+                          BS Student(IT)
                           <br />
-                          COMSATS University Islamabad, Lahore Campus, Pakistan
+                          University of Education, Lahore Campus, Pakistan
                           <br />
                         </Card.Text>
                         <Button variant="primary">Read More</Button>
@@ -361,20 +367,22 @@ class AAbout extends Component {
                     <Card style={this.cards}>
                       <Card.Img
                         variant="top"
-                        src="assets/images/Hassan.jpeg"
+                        src="assets/images/jahanzaib.png"
                         alt="Cosupervisor"
-                        style={{ height: 350 , objectFit:'cover'}}
+                        style={{ height: 350, objectFit: "cover" }}
                       />
                       <Card.Body>
-                        <Card.Title>Hassan Ahmad</Card.Title>
-                        <Card.Text style={{ fontSize: 14, color: "lightgray" }}>
+                        <Card.Title style={{ color: "blue" }}>
+                          Jahanzaib Ikhlaq
+                        </Card.Title>
+                        <Card.Text style={{ fontSize: 14, color: "gray" }}>
                           Developer
                         </Card.Text>
 
                         <Card.Text style={{ fontSize: 16, color: "gray" }}>
-                          BS Student(Software Engineering)
+                          BS Student(IT)
                           <br />
-                          COMSATS University Islamabad, Lahore Campus, Pakistan
+                          University of Education, Lahore Campus, Pakistan
                           <br />
                         </Card.Text>
                         <Button variant="primary">Read More</Button>

@@ -6,7 +6,7 @@ import AFooter from "../../Components/AFooter";
 import axios from "axios";
 import { URL } from "../../Config/Contants";
 import { toast } from "react-toastify";
-toast.configure()
+toast.configure();
 class MHelplist extends Component {
   state = { dataSource: [], loading: false, show: false, userdata: [] };
 
@@ -40,11 +40,11 @@ class MHelplist extends Component {
       .delete(URL.Url + "mdeletehelp/" + this.state.dataSource[id]._id)
       .then((res) => {
         toast("Successfully Deleted", {
-            position: toast.POSITION.TOP_CENTER,
-            autoClose: 1500,
-          });
-          window.location.reload(false);
-    });
+          position: toast.POSITION.TOP_CENTER,
+          autoClose: 1500,
+        });
+        window.location.reload(false);
+      });
   };
 
   componentDidMount() {
@@ -98,14 +98,14 @@ class MHelplist extends Component {
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <h2 className="heading2 white">
-                      Smart Auto Mechanic Finder
+                      Online Automobile Services
                     </h2>
                   </Col>
                 </Col>
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <p className="heading4white smokewhite">
-                    Mechanics Need Your Help
+                      Mechanics Need Your Help
                     </p>
                   </Col>
                 </Col>
@@ -135,12 +135,12 @@ class MHelplist extends Component {
                                   <Row style={{ alignItems: "center" }}>
                                     <Col className="col-sm-1">
                                       <img
-                                      alt='help'
+                                        alt="help"
                                         style={{
                                           height: 100,
                                           width: 100,
                                           borderRadius: 100,
-                                          objectFit:'cover'
+                                          objectFit: "cover",
                                         }}
                                         src={data.userimage}
                                       ></img>
@@ -155,22 +155,21 @@ class MHelplist extends Component {
                                       <p class="card-text">{data.message}</p>
                                     </Col>
                                     <Button
-                                   style={{marginRight:10}}
-                                   variant="info"
+                                      style={{ marginRight: 10 }}
+                                      variant="info"
                                       className="btn-sm "
                                       onClick={() => this.showdetail(index)}
                                     >
                                       View
                                     </Button>
                                     <Button
-                                    
                                       variant="danger"
                                       className="btn-sm "
                                       onClick={() => this.deletehelp(index)}
                                     >
                                       Delete
                                     </Button>
-                                     </Row>
+                                  </Row>
                                 </div>
                               </div>
                             );
@@ -191,7 +190,6 @@ class MHelplist extends Component {
             <Col className="col-sm-12">
               <hr style={{ backgroundColor: "white" }}></hr>
             </Col>
-         
           </Row>
         </Container>
         <AFooter></AFooter>

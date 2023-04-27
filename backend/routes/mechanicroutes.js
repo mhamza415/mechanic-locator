@@ -1,24 +1,24 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const {jwtkey} = require('../keys');
+const express = require("express");
+const mongoose = require("mongoose");
+const { jwtkey } = require("../keys");
 const router = express.Router();
-const jwt = require('jsonwebtoken');
+const jwt = require("jsonwebtoken");
 const nodemailer = require("nodemailer");
-const bcrypt = require('bcrypt');
-const Mechanicmodel = mongoose.model('mechanicmodel');
-const Usermodel = mongoose.model('Usermodel');
-const Reviewmodel = mongoose.model('ReviewModel');
-const Suggestion = mongoose.model('suggestions');
-const VehicalIssuemodel = mongoose.model('vehicalissue');
-const Mechanicreport = mongoose.model('mechanicreport');
-const Mwarning = mongoose.model('Mwarning');
-const Customerreport = mongoose.model('customerreport');
-const Admin = mongoose.model('Adminschema');
-const uhelp = mongoose.model('uhelp');
-const BookedUsermodel = mongoose.model('BookedUsermodel');
-const mhelp = mongoose.model('mhelp');
-router.post('/issueregister', async (req, res) => {
-  console.log('in issue register');
+const bcrypt = require("bcrypt");
+const Mechanicmodel = mongoose.model("mechanicmodel");
+const Usermodel = mongoose.model("Usermodel");
+const Reviewmodel = mongoose.model("ReviewModel");
+const Suggestion = mongoose.model("suggestions");
+const VehicalIssuemodel = mongoose.model("vehicalissue");
+const Mechanicreport = mongoose.model("mechanicreport");
+const Mwarning = mongoose.model("Mwarning");
+const Customerreport = mongoose.model("customerreport");
+const Admin = mongoose.model("Adminschema");
+const uhelp = mongoose.model("uhelp");
+const BookedUsermodel = mongoose.model("BookedUsermodel");
+const mhelp = mongoose.model("mhelp");
+router.post("/issueregister", async (req, res) => {
+  console.log("in issue register");
   const issue = new VehicalIssuemodel({
     carcompany: req.body.carcompany,
     issuetype: req.body.issuetype,
@@ -40,9 +40,8 @@ router.post('/issueregister', async (req, res) => {
   });
 });
 
-
-router.post('/registeradmin', async (req, res) => {
-  console.log('in admin register');
+router.post("/registeradmin", async (req, res) => {
+  console.log("in admin register");
   const admin = new Admin({
     email: req.body.email,
     password: req.body.password,
@@ -54,41 +53,39 @@ router.post('/registeradmin', async (req, res) => {
   });
 });
 
+router.post("/sendemail", async (req, res) => {
+  const { email, code } = req.body;
+  console.log("email", email);
+  console.log("code", code);
+  // create reusable transporter object using the default SMTP transport
+  let transporter = nodemailer.createTransport({
+    service: "gmail", // true for 465, false for other ports
+    auth: {
+      user: "hassanahmedleo786@gmail.com", // generated ethereal user
+      pass: "jamilbushra123", // generated ethereal password
+    },
+  });
 
-
-router.post('/sendemail', async (req, res) => { 
-  const {email , code} =req.body;
-  console.log("email",email)
-  console.log("code",code)
-    // create reusable transporter object using the default SMTP transport
-    let transporter = nodemailer.createTransport({
-     service:'gmail', // true for 465, false for other ports
-      auth: {
-        user: "hassanahmedleo786@gmail.com", // generated ethereal user
-        pass: "jamilbushra123", // generated ethereal password
-      },
-    });
-
-    const mesage = {from: 'hassanahmedleo786@gmail.com', // sender address
+  const mesage = {
+    from: "hassanahmedleo786@gmail.com", // sender address
     to: email, // list of receivers
-    subject: "Smart Auto Mechanic Finder Code", // Subject line
-    text: "Code is :"+code, // plain text body
-  }
-  
-    // send mail with defined transport object
-    let info = await transporter.sendMail(mesage)
-  
-    console.log("Message sent: %s", info.messageId);
-    // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
-  
-    // Preview only available when sending through an Ethereal account
-    console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
-    // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
-    res.send("Email Sent")
-  })
+    subject: "Online Automobile Services Code", // Subject line
+    text: "Code is :" + code, // plain text body
+  };
 
+  // send mail with defined transport object
+  let info = await transporter.sendMail(mesage);
 
-router.post('/sendwarning', async (req, res) => { 
+  console.log("Message sent: %s", info.messageId);
+  // Message sent: <b658f8ca-6296-ccf4-8306-87d57a0b4321@example.com>
+
+  // Preview only available when sending through an Ethereal account
+  console.log("Preview URL: %s", nodemailer.getTestMessageUrl(info));
+  // Preview URL: https://ethereal.email/message/WaQKMgKddxQDoou...
+  res.send("Email Sent");
+});
+
+router.post("/sendwarning", async (req, res) => {
   const Mwarning1 = new Mwarning({
     warning: req.body.warning,
     mdbid: req.body.mdbid,
@@ -101,7 +98,7 @@ router.post('/sendwarning', async (req, res) => {
   });
 });
 
-router.delete('/Mdeletewarning/:id', async (req, res) => {
+router.delete("/Mdeletewarning/:id", async (req, res) => {
   Mwarning.findByIdAndDelete(req.params.id)
     .then((data) => {
       res.json(data);
@@ -111,13 +108,13 @@ router.delete('/Mdeletewarning/:id', async (req, res) => {
     });
 });
 
-router.get('/getMwarning/:mdbid', (req, res) => {
+router.get("/getMwarning/:mdbid", (req, res) => {
   Mwarning.find({
     mdbid: req.params.mdbid,
   })
-    .sort('id')
+    .sort("id")
     .then((warning) => {
-      if (!warning) return res.send('');
+      if (!warning) return res.send("");
       else res.json(warning);
     })
     .catch((err) => {
@@ -125,7 +122,7 @@ router.get('/getMwarning/:mdbid', (req, res) => {
     });
 });
 
-router.delete('/Wdelete/:id', async (req, res) => {
+router.delete("/Wdelete/:id", async (req, res) => {
   Mwarning.findByIdAndDelete(req.params.id)
     .then((data) => {
       res.json(data);
@@ -135,8 +132,8 @@ router.delete('/Wdelete/:id', async (req, res) => {
     });
 });
 
-router.post('/Creportregister', async (req, res) => {
-  console.log('in Creport register');
+router.post("/Creportregister", async (req, res) => {
+  console.log("in Creport register");
   const report = new Mechanicreport({
     reportdescription: req.body.reportdescription,
     reporttype: req.body.reporttype,
@@ -152,8 +149,8 @@ router.post('/Creportregister', async (req, res) => {
   });
 });
 
-router.post('/Mreportregister', async (req, res) => {
-  console.log('in Mreport register');
+router.post("/Mreportregister", async (req, res) => {
+  console.log("in Mreport register");
   const report = new Customerreport({
     reportdescription: req.body.reportdescription,
     reporttype: req.body.reporttype,
@@ -169,9 +166,9 @@ router.post('/Mreportregister', async (req, res) => {
   });
 });
 
-router.get('/Cgetreport', (req, res) => {
+router.get("/Cgetreport", (req, res) => {
   Mechanicreport.find()
-    .sort('id')
+    .sort("id")
     .select({
       reportdescription: 1,
       reporttype: 1,
@@ -181,7 +178,7 @@ router.get('/Cgetreport', (req, res) => {
       userphoto: 1,
     })
     .then((reports) => {
-      if (!reports) return res.status(404).send('Not Found');
+      if (!reports) return res.status(404).send("Not Found");
       else res.json(reports);
     })
     .catch((err) => {
@@ -189,9 +186,9 @@ router.get('/Cgetreport', (req, res) => {
     });
 });
 
-router.get('/Mgetreport', (req, res) => {
+router.get("/Mgetreport", (req, res) => {
   Customerreport.find()
-    .sort('id')
+    .sort("id")
     .select({
       reportdescription: 1,
       reporttype: 1,
@@ -201,7 +198,7 @@ router.get('/Mgetreport', (req, res) => {
       mechanicphoto: 1,
     })
     .then((reports) => {
-      if (!reports) return res.status(404).send('Not Found');
+      if (!reports) return res.status(404).send("Not Found");
       else res.json(reports);
     })
     .catch((err) => {
@@ -209,24 +206,24 @@ router.get('/Mgetreport', (req, res) => {
     });
 });
 
-router.delete('/mdeletehelp/:id', (req, res) => {
+router.delete("/mdeletehelp/:id", (req, res) => {
   mhelp
-    .findByIdAndDelete({_id: req.params.id})
-    .sort('id')
+    .findByIdAndDelete({ _id: req.params.id })
+    .sort("id")
     .then((reports) => {
-      if (!reports) return res.status(404).send('Not Found');
+      if (!reports) return res.status(404).send("Not Found");
       else res.json(reports);
     })
     .catch((err) => {
       res.status(404).send(err.message);
     });
 });
-router.delete('/udeletehelp/:id', (req, res) => {
+router.delete("/udeletehelp/:id", (req, res) => {
   uhelp
-    .findByIdAndDelete({_id: req.params.id})
-    .sort('id')
+    .findByIdAndDelete({ _id: req.params.id })
+    .sort("id")
     .then((reports) => {
-      if (!reports) return res.status(404).send('Not Found');
+      if (!reports) return res.status(404).send("Not Found");
       else res.json(reports);
     })
     .catch((err) => {
@@ -234,7 +231,7 @@ router.delete('/udeletehelp/:id', (req, res) => {
     });
 });
 
-router.post('/mhelp', async (req, res) => {
+router.post("/mhelp", async (req, res) => {
   const mhelp1 = new mhelp({
     question: req.body.question,
     message: req.body.message,
@@ -252,10 +249,10 @@ router.post('/mhelp', async (req, res) => {
       res.status(404).send(err.message);
     });
 });
-router.get('/mgethelp', (req, res) => {
+router.get("/mgethelp", (req, res) => {
   mhelp
     .find()
-    .sort('id')
+    .sort("id")
     .select({
       question: 1,
       message: 1,
@@ -263,7 +260,7 @@ router.get('/mgethelp', (req, res) => {
       userimage: 1,
     })
     .then((reports) => {
-      if (!reports) return res.status(404).send('Not Found');
+      if (!reports) return res.status(404).send("Not Found");
       else res.json(reports);
     })
     .catch((err) => {
@@ -271,10 +268,10 @@ router.get('/mgethelp', (req, res) => {
     });
 });
 
-router.get('/cgethelp', (req, res) => {
+router.get("/cgethelp", (req, res) => {
   uhelp
     .find()
-    .sort('id')
+    .sort("id")
     .select({
       question: 1,
       message: 1,
@@ -282,7 +279,7 @@ router.get('/cgethelp', (req, res) => {
       userimage: 1,
     })
     .then((reports) => {
-      if (!reports) return res.status(404).send('Not Found');
+      if (!reports) return res.status(404).send("Not Found");
       else res.json(reports);
     })
     .catch((err) => {
@@ -290,7 +287,7 @@ router.get('/cgethelp', (req, res) => {
     });
 });
 
-router.delete('/deletemhelp/:id', async (req, res) => {
+router.delete("/deletemhelp/:id", async (req, res) => {
   mhelp
     .findByIdAndDelete(req.params.id)
     .then((data) => {
@@ -301,7 +298,7 @@ router.delete('/deletemhelp/:id', async (req, res) => {
     });
 });
 
-router.delete('/deletechelp/:id', async (req, res) => {
+router.delete("/deletechelp/:id", async (req, res) => {
   uhelp
     .findByIdAndDelete(req.params.id)
     .then((data) => {
@@ -312,7 +309,7 @@ router.delete('/deletechelp/:id', async (req, res) => {
     });
 });
 
-router.delete('/Cdeletereport/:id', async (req, res) => {
+router.delete("/Cdeletereport/:id", async (req, res) => {
   Mechanicreport.findByIdAndDelete(req.params.id)
     .then((data) => {
       res.json(data);
@@ -322,7 +319,7 @@ router.delete('/Cdeletereport/:id', async (req, res) => {
     });
 });
 
-router.delete('/Mdeletereport/:id', async (req, res) => {
+router.delete("/Mdeletereport/:id", async (req, res) => {
   Customerreport.findByIdAndDelete(req.params.id)
     .then((data) => {
       res.json(data);
@@ -332,7 +329,7 @@ router.delete('/Mdeletereport/:id', async (req, res) => {
     });
 });
 
-router.delete('/deletemechanic/:id', async (req, res) => {
+router.delete("/deletemechanic/:id", async (req, res) => {
   Mechanicmodel.findByIdAndDelete(req.params.id)
     .then((data) => {
       res.json(data);
@@ -342,8 +339,8 @@ router.delete('/deletemechanic/:id', async (req, res) => {
     });
 });
 
-router.route('/paintercount').get(function (req, res) {
-  Mechanicmodel.count({skilltype: 'Painter'}, function (err, result) {
+router.route("/paintercount").get(function (req, res) {
+  Mechanicmodel.count({ skilltype: "Painter" }, function (err, result) {
     if (err) {
       console.log(err);
     } else {
@@ -352,7 +349,7 @@ router.route('/paintercount').get(function (req, res) {
   });
 });
 
-router.route('/mechaniccount').get(function (req, res) {
+router.route("/mechaniccount").get(function (req, res) {
   Mechanicmodel.count(function (err, result) {
     if (err) {
       console.log(err);
@@ -362,8 +359,8 @@ router.route('/mechaniccount').get(function (req, res) {
   });
 });
 
-router.route('/bookedmcount').get(function (req, res) {
-  BookedUsermodel.count({Status: 'Online'}, function (err, result) {
+router.route("/bookedmcount").get(function (req, res) {
+  BookedUsermodel.count({ Status: "Online" }, function (err, result) {
     if (err) {
       console.log(err);
     } else {
@@ -372,8 +369,8 @@ router.route('/bookedmcount').get(function (req, res) {
   });
 });
 
-router.route('/enginecount').get(function (req, res) {
-  Mechanicmodel.count({skilltype: 'Engine'}, function (err, result) {
+router.route("/enginecount").get(function (req, res) {
+  Mechanicmodel.count({ skilltype: "Engine" }, function (err, result) {
     if (err) {
       console.log(err);
     } else {
@@ -381,8 +378,8 @@ router.route('/enginecount').get(function (req, res) {
     }
   });
 });
-router.route('/bodycount').get(function (req, res) {
-  Mechanicmodel.count({skilltype: 'Body'}, function (err, result) {
+router.route("/bodycount").get(function (req, res) {
+  Mechanicmodel.count({ skilltype: "Body" }, function (err, result) {
     if (err) {
       console.log(err);
     } else {
@@ -390,18 +387,8 @@ router.route('/bodycount').get(function (req, res) {
     }
   });
 });
-router.route('/electriccount').get(function (req, res) {
-  Mechanicmodel.count({skilltype: 'Electric'}, function (err, result) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(result);
-    }
-  });
-});
-
-router.route('/electricissuecount').get(function (req, res) {
-  VehicalIssuemodel.count({issuetype: 'Electric'}, function (err, result) {
+router.route("/electriccount").get(function (req, res) {
+  Mechanicmodel.count({ skilltype: "Electric" }, function (err, result) {
     if (err) {
       console.log(err);
     } else {
@@ -410,8 +397,8 @@ router.route('/electricissuecount').get(function (req, res) {
   });
 });
 
-router.route('/bodyissuecount').get(function (req, res) {
-  VehicalIssuemodel.count({issuetype: 'Body'}, function (err, result) {
+router.route("/electricissuecount").get(function (req, res) {
+  VehicalIssuemodel.count({ issuetype: "Electric" }, function (err, result) {
     if (err) {
       console.log(err);
     } else {
@@ -420,17 +407,8 @@ router.route('/bodyissuecount').get(function (req, res) {
   });
 });
 
-router.route('/engineissuecount').get(function (req, res) {
-  VehicalIssuemodel.count({issuetype: 'Engine'}, function (err, result) {
-    if (err) {
-      console.log(err);
-    } else {
-      res.json(result);
-    }
-  });
-});
-router.route('/painterissuecount').get(function (req, res) {
-  VehicalIssuemodel.count({issuetype: 'Painter'}, function (err, result) {
+router.route("/bodyissuecount").get(function (req, res) {
+  VehicalIssuemodel.count({ issuetype: "Body" }, function (err, result) {
     if (err) {
       console.log(err);
     } else {
@@ -439,7 +417,26 @@ router.route('/painterissuecount').get(function (req, res) {
   });
 });
 
-router.get('/vehicalissues/:issuetype/:vehicaltype/:carcompany', (req, res) => {
+router.route("/engineissuecount").get(function (req, res) {
+  VehicalIssuemodel.count({ issuetype: "Engine" }, function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+router.route("/painterissuecount").get(function (req, res) {
+  VehicalIssuemodel.count({ issuetype: "Painter" }, function (err, result) {
+    if (err) {
+      console.log(err);
+    } else {
+      res.json(result);
+    }
+  });
+});
+
+router.get("/vehicalissues/:issuetype/:vehicaltype/:carcompany", (req, res) => {
   // var vehicaltype;
   // var issuetype;
   // var carcompany;
@@ -450,7 +447,7 @@ router.get('/vehicalissues/:issuetype/:vehicaltype/:carcompany', (req, res) => {
     vehicaltype: req.params.vehicaltype,
     carcompany: req.params.carcompany,
   })
-    .sort('id')
+    .sort("id")
     .select({
       _id: 1,
       phone: 1,
@@ -467,7 +464,7 @@ router.get('/vehicalissues/:issuetype/:vehicaltype/:carcompany', (req, res) => {
       issuevideo: 1,
     })
     .then((issues) => {
-      if (!issues) return res.status(404).send('Not Found');
+      if (!issues) return res.status(404).send("Not Found");
       else res.json(issues);
     })
     .catch((err) => {
@@ -475,11 +472,11 @@ router.get('/vehicalissues/:issuetype/:vehicaltype/:carcompany', (req, res) => {
     });
 });
 
-router.get('/vehicalissuesC/:userdbid', (req, res) => {
+router.get("/vehicalissuesC/:userdbid", (req, res) => {
   VehicalIssuemodel.find({
     userdbid: req.params.userdbid,
   })
-    .sort('id')
+    .sort("id")
     .select({
       phone: 1,
       city: 1,
@@ -495,7 +492,7 @@ router.get('/vehicalissuesC/:userdbid', (req, res) => {
       issuevideo: 1,
     })
     .then((issues) => {
-      if (!issues) return res.status(404).send('Not Found');
+      if (!issues) return res.status(404).send("Not Found");
       else res.json(issues);
     })
     .catch((err) => {
@@ -503,8 +500,8 @@ router.get('/vehicalissuesC/:userdbid', (req, res) => {
     });
 });
 
-router.post('/postsuggestion', async (req, res) => {
-  console.log('in suggestion');
+router.post("/postsuggestion", async (req, res) => {
+  console.log("in suggestion");
   const suggestion = new Suggestion({
     firstname: req.body.firstname,
     suggestion: req.body.suggestion,
@@ -519,11 +516,11 @@ router.post('/postsuggestion', async (req, res) => {
   });
 });
 
-router.get('/issuessuggestion/:issueid', (req, res) => {
+router.get("/issuessuggestion/:issueid", (req, res) => {
   Suggestion.find({
     issueid: req.params.issueid,
   })
-    .sort('id')
+    .sort("id")
     .select({
       suggestion: 1,
       firstname: 1,
@@ -531,7 +528,7 @@ router.get('/issuessuggestion/:issueid', (req, res) => {
       mphoto: 1,
     })
     .then((suggestion) => {
-      if (!suggestion) return res.status(404).send('Not Found');
+      if (!suggestion) return res.status(404).send("Not Found");
       else res.json(suggestion);
     })
     .catch((err) => {
@@ -539,9 +536,9 @@ router.get('/issuessuggestion/:issueid', (req, res) => {
     });
 });
 
-router.put('/updateissue/:issueid', (req, res) => {
+router.put("/updateissue/:issueid", (req, res) => {
   VehicalIssuemodel.findByIdAndUpdate(
-    {_id: req.params.issueid},
+    { _id: req.params.issueid },
     {
       issuetype: req.body.issuetype,
       phone: req.body.Phone,
@@ -550,11 +547,11 @@ router.put('/updateissue/:issueid', (req, res) => {
       city: req.body.city,
       description: req.body.description,
       vehicaltype: req.body.vehicaltype,
-    },
+    }
   )
     .then((issue) => {
       if (!issue) {
-        return res.status(404).send('Issue Not Found');
+        return res.status(404).send("Issue Not Found");
       } else {
         // mechanic.update();
         return res.status(200).json(issue);
@@ -565,42 +562,37 @@ router.put('/updateissue/:issueid', (req, res) => {
     });
 });
 
+router.put("/confirmuser", async (req, res) => {
+  console.log("confirnuser api");
+  console.log("confirnuser email", req.body.email);
 
-router.put('/confirmuser', async(req, res) => { 
-  console.log("confirnuser api")
-  console.log("confirnuser email",req.body.email)
-  
-  const mechanic =await Mechanicmodel.findOne({email: req.body.email}) .sort('id')
-  .select({
-    _id: 1,})
-  
-   
-      console.log("mechanic db id",mechanic._id)
-      if (!mechanic) {
-        return res.status(404).send('email Not Found');
-      } else {
-        console.log("mechanicid in api",mechanic._id)
-        const User = Mechanicmodel.findByIdAndUpdate(mechanic._id, {
-          econfirm:true,
-        })
-          .then((data) => {
-            console.log('afterupdate', data);
-          res.send({message:"confirm"});
-            // const token = jwt.sign({userid: User._id}, jwtkey);
-            // res.send({token});
-          })
-          .catch((err) => {
-            res.status(404).send(err.message);
-          });
-       
-      }
-   
-  
+  const mechanic = await Mechanicmodel.findOne({ email: req.body.email })
+    .sort("id")
+    .select({
+      _id: 1,
+    });
+
+  console.log("mechanic db id", mechanic._id);
+  if (!mechanic) {
+    return res.status(404).send("email Not Found");
+  } else {
+    console.log("mechanicid in api", mechanic._id);
+    const User = Mechanicmodel.findByIdAndUpdate(mechanic._id, {
+      econfirm: true,
+    })
+      .then((data) => {
+        console.log("afterupdate", data);
+        res.send({ message: "confirm" });
+        // const token = jwt.sign({userid: User._id}, jwtkey);
+        // res.send({token});
+      })
+      .catch((err) => {
+        res.status(404).send(err.message);
+      });
+  }
 });
 
-
-
-router.delete('/deleteissue/:id', async (req, res) => {
+router.delete("/deleteissue/:id", async (req, res) => {
   VehicalIssuemodel.findByIdAndDelete(req.params.id)
     .then((data) => {
       res.json(data);
@@ -610,47 +602,46 @@ router.delete('/deleteissue/:id', async (req, res) => {
     });
 });
 
-router.post('/adminsignin', async (req, res) => {
-  const {email, password} = req.body;
+router.post("/adminsignin", async (req, res) => {
+  const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(422).send({error: 'Provide Email and Password Both!!'});
+    return res.status(422).send({ error: "Provide Email and Password Both!!" });
   }
-  const admn1 = await Admin.findOne({email});
+  const admn1 = await Admin.findOne({ email });
   console.log(admn1);
   if (!admn1) {
-    return res.status(422).send({error: 'Email not exist!!'});
+    return res.status(422).send({ error: "Email not exist!!" });
   }
   try {
     if (admn1.password == password) {
-      const atoken = jwt.sign({adminid: admn1._id,role:'Admin'
-    }, jwtkey);
-      res.send({atoken});
+      const atoken = jwt.sign({ adminid: admn1._id, role: "Admin" }, jwtkey);
+      res.send({ atoken });
     }
   } catch (err) {
-    return res.status(422).send({error: 'Password not exist!!'});
+    return res.status(422).send({ error: "Password not exist!!" });
   }
 });
 
-router.post('/mechanicsignin', async (req, res) => {
-  const {email, password} = req.body;
+router.post("/mechanicsignin", async (req, res) => {
+  const { email, password } = req.body;
   if (!email || !password) {
-    return res.status(422).send({error: 'Provide Email and Password Both!!'});
+    return res.status(422).send({ error: "Provide Email and Password Both!!" });
   }
-  const mechanic = await Mechanicmodel.findOne({email});
+  const mechanic = await Mechanicmodel.findOne({ email });
   if (!mechanic) {
-    return res.status(422).send({message: 'Email not exist!!'});
+    return res.status(422).send({ message: "Email not exist!!" });
   }
 
   try {
-    if(mechanic.blocked==true){
-      return res.send({message:"blocked"});
-    }
-    else if(mechanic.econfirm==false)
-    {
-      return res.send({message:"new",code:mechanic.code,email:mechanic.email});
-    }
-    else
-    await mechanic.comparePassword(password);
+    if (mechanic.blocked == true) {
+      return res.send({ message: "blocked" });
+    } else if (mechanic.econfirm == false) {
+      return res.send({
+        message: "new",
+        code: mechanic.code,
+        email: mechanic.email,
+      });
+    } else await mechanic.comparePassword(password);
     const token = jwt.sign(
       {
         mechanicid: mechanic._id,
@@ -668,18 +659,18 @@ router.post('/mechanicsignin', async (req, res) => {
         date: mechanic.date,
         mechanicrate: mechanic.mechanicrate,
         rating: mechanic.rating,
-        role:'Mechanic'
+        role: "Mechanic",
       },
-      jwtkey,
+      jwtkey
     );
-    res.send({token});
+    res.send({ token });
   } catch (err) {
-    return res.status(422).send({error: 'Password not exist!!'});
+    return res.status(422).send({ error: "Password not exist!!" });
   }
 });
 
 //Mechanic Registeration
-router.post('/mechanicregister', async (req, res) => {
+router.post("/mechanicregister", async (req, res) => {
   const mechanic = new Mechanicmodel({
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -699,16 +690,16 @@ router.post('/mechanicregister', async (req, res) => {
     vehicletype: req.body.vehicletype,
     date: req.body.date,
     rating: req.body.rating,
-    code:req.body.code,
-    blocked:false,
-    econfirm:false
+    code: req.body.code,
+    blocked: false,
+    econfirm: false,
   });
 
   await mechanic
     .save()
     .then(() => {
-      const token = jwt.sign({mechanicid: mechanic._id}, jwtkey);
-      res.send({token});
+      const token = jwt.sign({ mechanicid: mechanic._id }, jwtkey);
+      res.send({ token });
     })
     // .then((data) => {
     //
@@ -719,33 +710,33 @@ router.post('/mechanicregister', async (req, res) => {
     });
 });
 
-router.get('/me', function (req, res) {
-  var token = req.headers['x-access-token'];
+router.get("/me", function (req, res) {
+  var token = req.headers["x-access-token"];
   if (!token)
-    return res.status(401).send({auth: false, message: 'No token provided.'});
+    return res.status(401).send({ auth: false, message: "No token provided." });
 
   jwt.verify(token, jwtkey, function (err, decoded) {
     if (err)
       return res
         .status(500)
-        .send({auth: false, message: 'Failed to authenticate token.'});
+        .send({ auth: false, message: "Failed to authenticate token." });
     res.status(200).send(decoded);
   });
 });
 
 //Update Mechanic Lat and Long
 //Update User Lat & Long
-router.put('/mechaniclocation/:id', async (req, res) => {
+router.put("/mechaniclocation/:id", async (req, res) => {
   Mechanicmodel.findByIdAndUpdate(
-    {_id: req.params.id},
+    { _id: req.params.id },
     {
       longitude: req.body.longitude,
       latitude: req.body.latitude,
-    },
+    }
   )
     .then((mechanic) => {
       if (!mechanic) {
-        return res.status(404).send('Mechanic Not Found');
+        return res.status(404).send("Mechanic Not Found");
       } else {
         return res.status(200).json(mechanic);
       }
@@ -756,16 +747,16 @@ router.put('/mechaniclocation/:id', async (req, res) => {
 });
 
 //Update User Profile
-router.put('/mforgetpass', async (req, res, next) => {
-  console.log('in m forget api');
-  let {nickname, npassword, email} = req.body;
+router.put("/mforgetpass", async (req, res, next) => {
+  console.log("in m forget api");
+  let { nickname, npassword, email } = req.body;
   bcrypt.genSalt(10, (err, salt) => {
-    console.log('IN GENRATE SALT');
+    console.log("IN GENRATE SALT");
     if (err) {
       return next(err);
     }
     bcrypt.hash(npassword, salt, (err, hash) => {
-      console.log('in hash');
+      console.log("in hash");
       if (err) {
         return err;
       }
@@ -773,11 +764,11 @@ router.put('/mforgetpass', async (req, res, next) => {
       console.log(npassword);
     });
   });
-  const user = await Mechanicmodel.findOne({email});
+  const user = await Mechanicmodel.findOne({ email });
   if (!user) {
-    return res.status(422).send({error: 'Email not exist!!'});
+    return res.status(422).send({ error: "Email not exist!!" });
   }
-  console.log('user', user);
+  console.log("user", user);
   try {
     if (user.nickname == nickname) {
       const User = Mechanicmodel.findByIdAndUpdate(user._id, {
@@ -796,7 +787,7 @@ router.put('/mforgetpass', async (req, res, next) => {
         date: user.date,
       })
         .then((data) => {
-          console.log('afterupdate', data);
+          console.log("afterupdate", data);
           res.send(data);
           // const token = jwt.sign({userid: User._id}, jwtkey);
           // res.send({token});
@@ -805,16 +796,16 @@ router.put('/mforgetpass', async (req, res, next) => {
           res.status(404).send(err.message);
         });
     } else {
-      res.status(422).send({error: 'nickname not exist!!'});
+      res.status(422).send({ error: "nickname not exist!!" });
     }
   } catch (err) {
-    return res.status(422).send({error: 'Password not exist!!'});
+    return res.status(422).send({ error: "Password not exist!!" });
   }
 });
 
-router.get('/bodymechanic', (req, res) => {
-  Mechanicmodel.find({skilltype: 'Body'})
-    .sort('id')
+router.get("/bodymechanic", (req, res) => {
+  Mechanicmodel.find({ skilltype: "Body" })
+    .sort("id")
     .select({
       firstname: 1,
       lastname: 1,
@@ -835,7 +826,7 @@ router.get('/bodymechanic', (req, res) => {
     })
     .then((mechanic) => {
       if (!mechanic) {
-        return res.status(404).send('Mechanic Not Found');
+        return res.status(404).send("Mechanic Not Found");
       }
       return res.status(200).json(mechanic);
     })
@@ -844,10 +835,10 @@ router.get('/bodymechanic', (req, res) => {
     });
 });
 
-router.get('/getblockmechanic', (req, res) => {
-  console.log('in getblock mechaniuc api');
-  Mechanicmodel.find({blocked: true})
-    .sort('id')
+router.get("/getblockmechanic", (req, res) => {
+  console.log("in getblock mechaniuc api");
+  Mechanicmodel.find({ blocked: true })
+    .sort("id")
     .select({
       _id: 1,
       firstname: 1,
@@ -869,7 +860,7 @@ router.get('/getblockmechanic', (req, res) => {
     })
     .then((mechanic) => {
       if (!mechanic) {
-        return res.status(404).send('Mechanic Not Found');
+        return res.status(404).send("Mechanic Not Found");
       }
       return res.status(200).json(mechanic);
     })
@@ -878,7 +869,7 @@ router.get('/getblockmechanic', (req, res) => {
     });
 });
 
-router.put('/blockmechanic/:id', (req, res) => {
+router.put("/blockmechanic/:id", (req, res) => {
   const User = Mechanicmodel.findByIdAndUpdate(req.params.id, {
     blocked: true,
   })
@@ -893,7 +884,7 @@ router.put('/blockmechanic/:id', (req, res) => {
     });
 });
 
-router.put('/unblockmechanic/:id', (req, res) => {
+router.put("/unblockmechanic/:id", (req, res) => {
   const User = Mechanicmodel.findByIdAndUpdate(req.params.id, {
     blocked: req.body.blocked,
   })
@@ -907,13 +898,13 @@ router.put('/unblockmechanic/:id', (req, res) => {
       res.status(404).send(err.message);
     });
 });
-router.get('/topmechanics', (req, res) => {
-  Mechanicmodel.find({rating: {$gte: 3}})
-    .sort('id')
-    .select({rating: 1, firstname: 1, photo: 1, lastname: 1,phone:1})
+router.get("/topmechanics", (req, res) => {
+  Mechanicmodel.find({ rating: { $gte: 3 } })
+    .sort("id")
+    .select({ rating: 1, firstname: 1, photo: 1, lastname: 1, phone: 1 })
     .then((mechanic) => {
       if (!mechanic) {
-        return res.status(404).send('Mechanic Not Found');
+        return res.status(404).send("Mechanic Not Found");
       }
       return res.status(200).json(mechanic);
     })
@@ -922,12 +913,12 @@ router.get('/topmechanics', (req, res) => {
     });
 });
 
-router.get('/topmechanic/:id', (req, res) => {
+router.get("/topmechanic/:id", (req, res) => {
   Mechanicmodel.findById(req.params.id)
-    .sort('id')
+    .sort("id")
     .then((mechanic) => {
       if (!mechanic) {
-        return res.status(404).send('Mechanic Not Found');
+        return res.status(404).send("Mechanic Not Found");
       }
       return res.status(200).json(mechanic);
     })
@@ -936,9 +927,9 @@ router.get('/topmechanic/:id', (req, res) => {
     });
 });
 
-router.get('/enginemechanic', (req, res) => {
-  Mechanicmodel.find({skilltype: 'Engine'})
-    .sort('id')
+router.get("/enginemechanic", (req, res) => {
+  Mechanicmodel.find({ skilltype: "Engine" })
+    .sort("id")
     .select({
       firstname: 1,
       lastname: 1,
@@ -959,7 +950,7 @@ router.get('/enginemechanic', (req, res) => {
     })
     .then((mechanic) => {
       if (!mechanic) {
-        return res.status(404).send('Mechanic Not Found');
+        return res.status(404).send("Mechanic Not Found");
       }
       return res.status(200).json(mechanic);
     })
@@ -968,9 +959,9 @@ router.get('/enginemechanic', (req, res) => {
     });
 });
 
-router.get('/electricmechanic', (req, res) => {
-  Mechanicmodel.find({skilltype: 'Electric'})
-    .sort('id')
+router.get("/electricmechanic", (req, res) => {
+  Mechanicmodel.find({ skilltype: "Electric" })
+    .sort("id")
     .select({
       firstname: 1,
       lastname: 1,
@@ -991,7 +982,7 @@ router.get('/electricmechanic', (req, res) => {
     })
     .then((mechanic) => {
       if (!mechanic) {
-        return res.status(404).send('Mechanic Not Found');
+        return res.status(404).send("Mechanic Not Found");
       }
       return res.status(200).json(mechanic);
     })
@@ -1000,9 +991,9 @@ router.get('/electricmechanic', (req, res) => {
     });
 });
 
-router.get('/paintermechanic', (req, res) => {
-  Mechanicmodel.find({skilltype: 'Painter'})
-    .sort('id')
+router.get("/paintermechanic", (req, res) => {
+  Mechanicmodel.find({ skilltype: "Painter" })
+    .sort("id")
     .select({
       firstname: 1,
       lastname: 1,
@@ -1023,7 +1014,7 @@ router.get('/paintermechanic', (req, res) => {
     })
     .then((mechanic) => {
       if (!mechanic) {
-        return res.status(404).send('Mechanic Not Found');
+        return res.status(404).send("Mechanic Not Found");
       }
       return res.status(200).json(mechanic);
     })
@@ -1033,9 +1024,9 @@ router.get('/paintermechanic', (req, res) => {
 });
 
 //Get Mechanic By Id
-router.get('/mechanic/:id', (req, res) => {
+router.get("/mechanic/:id", (req, res) => {
   Mechanicmodel.findById(req.params.id)
-    .sort('id')
+    .sort("id")
     .select({
       firstname: 1,
       lastname: 1,
@@ -1056,7 +1047,7 @@ router.get('/mechanic/:id', (req, res) => {
     })
     .then((mechanic) => {
       if (!mechanic) {
-        return res.status(404).send('Mechanic Not Found');
+        return res.status(404).send("Mechanic Not Found");
       }
       return res.status(200).json(mechanic);
     })
@@ -1067,9 +1058,9 @@ router.get('/mechanic/:id', (req, res) => {
 
 //Get all Mechanics
 
-router.get('/mechanics', (req, res) => {
+router.get("/mechanics", (req, res) => {
   async function get() {
-    const mechanics = await Mechanicmodel.find().sort('id').select({
+    const mechanics = await Mechanicmodel.find().sort("id").select({
       firstname: 1,
       lastname: 1,
       email: 1,
@@ -1088,13 +1079,13 @@ router.get('/mechanics', (req, res) => {
       mechanicrate: 1,
       rating: 1,
     });
-    if (!mechanics) return res.status(404).send('Not Found');
+    if (!mechanics) return res.status(404).send("Not Found");
     res.send(mechanics);
   }
   get();
 });
 router.get(
-  '/nearmechanics/:skilltype/:vehicletype/:carcompany/:id',
+  "/nearmechanics/:skilltype/:vehicletype/:carcompany/:id",
   (req, res) => {
     var latitude;
     var longitude;
@@ -1102,7 +1093,7 @@ router.get(
     var country;
     var nearest = [];
     Usermodel.findById(req.params.id)
-      .sort('id')
+      .sort("id")
       .select({
         longitude: 1,
         latitude: 1,
@@ -1111,7 +1102,7 @@ router.get(
       })
       .then((user) => {
         if (!user) {
-          return res.status(404).send('User Not Found');
+          return res.status(404).send("User Not Found");
         }
         // return res.status(200).json(user);
         latitude = user.latitude;
@@ -1127,10 +1118,9 @@ router.get(
           city: city,
           country: country,
           blocked: false,
-          rating:{$gte: 3}
-
+          rating: { $gte: 3 },
         })
-          .sort('id')
+          .sort("id")
           .select({
             firstname: 1,
             lastname: 1,
@@ -1149,7 +1139,7 @@ router.get(
             rating: 1,
           })
           .then((mechanics) => {
-            if (!mechanics) return res.status(404).send('Not Found');
+            if (!mechanics) return res.status(404).send("Not Found");
             mechanics.map((item) => {
               let Lat1 = latitude / 57.29577951;
               let Lat2 = item.latitude / 57.29577951;
@@ -1199,10 +1189,10 @@ router.get(
             return res.send(error);
           });
       });
-  },
+  }
 );
 
-router.put('/mechanicrating/:id', async (req, res) => {
+router.put("/mechanicrating/:id", async (req, res) => {
   const totalfiverate = await Reviewmodel.find({
     mechanicid: req.params.id,
     rating: 5,
@@ -1236,21 +1226,21 @@ router.put('/mechanicrating/:id', async (req, res) => {
       totalonerate);
   console.log(totalrate);
   Mechanicmodel.findByIdAndUpdate(
-    {_id: req.params.id},
+    { _id: req.params.id },
     {
       rating: 1,
-    },
+    }
   )
     .then((mechanic) => {
       if (!mechanic) {
-        return res.status(404).send('Mechanic Not Found');
+        return res.status(404).send("Mechanic Not Found");
       } else {
         if (mechanic.rating != 0) {
           Mechanicmodel.findByIdAndUpdate(
-            {_id: req.params.id},
+            { _id: req.params.id },
             {
               rating: Math.trunc(totalrate),
-            },
+            }
           ).then((m) => {
             return res.status(200).json(m);
           });
@@ -1264,7 +1254,7 @@ router.put('/mechanicrating/:id', async (req, res) => {
 
 //Update User Profile
 
-router.put('/updatemechanic/:id', (req, res) => {
+router.put("/updatemechanic/:id", (req, res) => {
   const User = Mechanicmodel.findByIdAndUpdate(req.params.id, {
     firstname: req.body.firstname,
     lastname: req.body.lastname,
@@ -1290,7 +1280,7 @@ router.put('/updatemechanic/:id', (req, res) => {
     });
 });
 
-router.route('/mechaniccount').get(function (req, res) {
+router.route("/mechaniccount").get(function (req, res) {
   Mechanicmodel.count(function (err, result) {
     if (err) {
       console.log(err);

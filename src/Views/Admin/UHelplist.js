@@ -76,7 +76,6 @@ class UHelplist extends Component {
               <hr></hr>
               <h5>address:</h5>
               {userdata.address} {userdata.city} {userdata.country}
-          
             </Modal.Body>
             <Modal.Footer>
               <Button variant="danger" onClick={this.handleClose}>
@@ -97,14 +96,14 @@ class UHelplist extends Component {
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <h2 className="heading2 white">
-                      Smart Auto Mechanic Finder
+                      Online Automobile Services
                     </h2>
                   </Col>
                 </Col>
                 <Col className="col-sm-12">
                   <Col className="Aligncenter">
                     <p className="heading4white smokewhite">
-                    User Need Your Help
+                      User Need Your Help
                     </p>
                   </Col>
                 </Col>
@@ -133,14 +132,13 @@ class UHelplist extends Component {
                                 <div class="card-body">
                                   <Row style={{ alignItems: "center" }}>
                                     <Col className="col-sm-1">
-                                    
                                       <img
-                                    alt='help'
-                                    style={{
+                                        alt="help"
+                                        style={{
                                           height: 100,
                                           width: 100,
                                           borderRadius: 100,
-                                          objectFit:'cover'
+                                          objectFit: "cover",
                                         }}
                                         src={data.userimage}
                                       ></img>
@@ -190,7 +188,6 @@ class UHelplist extends Component {
             <Col className="col-sm-12">
               <hr style={{ backgroundColor: "white" }}></hr>
             </Col>
-         
           </Row>
         </Container>
         <AFooter></AFooter>

@@ -65,7 +65,7 @@ class AdminLogin extends Component {
               }}
             >
               <div class="col-lg-12">
-                <h1 className="heading4white">Smart Auto Mechanic Finder</h1>
+                <h1 className="heading4white">Online Automobile Services</h1>
                 <h5 className="heading4white">
                   (Admin have access to manage Userd & Mechanics)
                 </h5>

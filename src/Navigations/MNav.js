@@ -3,15 +3,12 @@ import { NavLink } from "react-router-dom";
 import { connect } from "react-redux";
 import { logout } from "../actions/index";
 
-
 class MNav extends Component {
-
   Logout = () => {
     this.props.logout();
   };
 
   render() {
-    
     return (
       <nav
         class="navbar navbar-expand-md bg-light navbar-light"
@@ -26,7 +23,7 @@ class MNav extends Component {
         >
           <img
             src="assets/images/appicon.png"
-            style={{ height: 25, width: 25, margin: 5, objectFit:'cover' }}
+            style={{ height: 25, width: 25, margin: 5, objectFit: "cover" }}
             alt="App"
           ></img>
           <a
@@ -34,7 +31,7 @@ class MNav extends Component {
             href="#lsa"
             style={{ fontFamily: "-moz-initial" }}
           >
-            Smart Auto Mechanic Finder
+            Online Automobile Services
           </a>
         </div>
         <div style={{ marginRight: 100 }}>
